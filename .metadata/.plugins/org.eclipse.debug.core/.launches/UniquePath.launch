@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/Twitter/src/UniquePath.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="UniquePath"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="2015-08,2016-04&#10;&#10;2015-08-15,clicks,635&#10;2016-03-24,app_installs,683&#10;2015-04-05,favorites,763&#10;2016-01-22,favorites,788&#10;2015-12-26,clicks,525&#10;2016-06-03,retweets,101&#10;2015-12-02,app_installs,982&#10;2016-09-17,app_installs,770&#10;2015-11-07,impressions,245&#10;2016-10-16,impressions,567"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Twitter"/>
+</launchConfiguration>

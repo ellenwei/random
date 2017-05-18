@@ -1,0 +1,118 @@
+package frontend;
+
+import java.util.ArrayList;
+
+import backend.Plane;
+import backend.Route;
+import javafx.scene.image.Image;
+
+import javafx.scene.image.ImageView;
+import javafx.scene.shape.Polygon;
+import javafx.event.EventHandler;
+
+/**
+*
+* @author Haohan
+*/
+
+public class GUIPlane extends ImageView {
+	enum PlaneColor{
+		routeConfirmed, routeNotSet
+	}
+	
+	enum RouteColor {
+		firstSuggestion, secondSuggestion, thirdSuggestion
+	}
+	
+	// location of plane
+	GUICoordinate location;
+	GUIRoute guiRoute;
+	int currSegment;
+	Plane plane;
+	PlaneColor planeColor;
+	Boolean routeIsSet;
+	Boolean isHighlighted;
+	
+	GUIPlane(GUICoordinate location, Plane plane, GUIAirport ga) {
+		this.location = location;
+		this.plane = plane;
+		this.routeIsSet = false;
+		this.isHighlighted = false;
+		this.setImage(new Image("plane.png"));
+		this.currSegment = 0; // First segment in GUISegment ArrayList from GUIRoute
+	}
+	
+	// triggered when a plane is touched on screen
+	public void touchPlane() {
+		// Display plane info in output panel
+		showPlaneData();
+		
+		if(routeIsSet) {
+			// Display route suggestions
+			displayRoute(plane.getRoute());
+		}
+		
+	//	planeColor = PlaneColor.highlighted;
+		
+		//need to change color for planes that were touched before
+	}
+	
+	public boolean checkRoute() {		
+		
+		// Check if current GUICoordinate is on a GUISegment in the GUIPlane's GUIRoute
+		GUICoordinate currCoord = this.location;
+		GUIRoute currRoute = this.guiRoute;
+		ArrayList<Polygon> currRouteSegments = currRoute.getGUISegments();
+		
+		for (int i = currSegment; i < currRouteSegments.size(); i++) {
+	
+			// We found the segment its on
+			if (currRouteSegments.get(i).contains(currCoord.getCoordinateX(), currCoord.getCoordinateY())) {
+				currSegment = i; // Update segment index
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	
+	// Display route suggestions
+	public void displayRoute(Route route) {
+		
+	}
+	
+	// Display plane info in output panel
+	public void showPlaneData() {
+		
+	}
+	
+	public GUICoordinate getLocation()
+	{
+		return this.location;
+	}
+	
+	public PlaneColor getPlaneColor()
+	{
+		return planeColor;
+	}
+	
+	public void toggleSelection()
+	{
+		this.isHighlighted = !(this.isHighlighted);
+	}
+	
+	public Boolean getIsHighlighted()
+	{
+		return this.isHighlighted;
+	}
+	
+	public Plane getPlane() {
+		return this.plane;
+	}
+	
+	public void setGUIRoute(GUIRoute guiRoute)
+	{
+		this.guiRoute = guiRoute;
+	}
+}

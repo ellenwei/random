@@ -1,0 +1,13 @@
+package twoSigma;
+
+public class WildcardMatching {
+	
+	public boolean solution1(String p, String s){
+		boolean[][] check = new boolean[p.length()+1][s.length()+1];
+	}
+	
+	
+	public static void main(String[] argv){
+		
+	}
+}

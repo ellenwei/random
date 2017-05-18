@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;client.FactroyShipper&apos; to &apos;FactoryShipper&apos;&#x0A;- Original project: &apos;CSCI201Factory&apos;&#x0A;- Original element: &apos;client.FactroyShipper&apos;&#x0A;- Renamed element: &apos;client.FactoryShipper&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;FactroyShipper&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;client{FactroyShipper.java[FactroyShipper" matchStrategy="1" name="FactoryShipper" qualified="false" references="true" similarDeclarations="false" stamp="1449092141480" textual="false" version="1.0"/>
+</session>

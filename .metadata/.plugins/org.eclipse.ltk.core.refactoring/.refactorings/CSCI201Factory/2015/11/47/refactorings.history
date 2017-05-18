@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;FactoryWall.java&apos; to &apos;CSCI201Factory/src/client&apos;&#x0A;- Original project: &apos;CSCI201Factory&apos;&#x0A;- Destination element: &apos;CSCI201Factory/src/client&apos;&#x0A;- Original element: &apos;FactoryWall.java&apos;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src&lt;client" element1="/src&lt;{FactoryWall.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1447800416969" units="1" version="1.0"/>
+</session>

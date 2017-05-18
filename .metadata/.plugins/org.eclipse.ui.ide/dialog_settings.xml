@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/Users/EllenWei/Desktop/LAX-Capstone-Project"/>
+			<item value="/Users/EllenWei/Documents/workspace/LAX"/>
+			<item value="/Users/EllenWei/Downloads/careymd_CSCI201_Assignment1"/>
+			<item value="/Users/EllenWei/Downloads/CSCI201Factory"/>
+			<item value="/Users/EllenWei/201project"/>
+			<item value="/Users/EllenWei/Downloads"/>
+			<item value="/Users/EllenWei/Downloads/careymd_CSCI201_Assignment3"/>
+			<item value="/Users/EllenWei/Downloads/CSCI201Factory-2"/>
+			<item value="/Users/EllenWei/Downloads/jiahuiwe_CSCI201_Assignment2"/>
+			<item value="/Users/EllenWei/Downloads/careymd_CSCI201_Assignment2"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="NewWizardAction">
+	</section>
+</section>

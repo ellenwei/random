@@ -1,0 +1,49 @@
+package twoSigma;
+
+public class WildcardMatching {
+	
+	
+	// '?' Matches any single character.
+	// '*' Matches any sequence of characters (including the empty sequence).
+	
+	public static boolean solution1(String p, String s){
+		boolean[][] check = new boolean[p.length()+1][s.length()+1];
+		check[0][0] = true;
+		for(int i=1; i<=s.length(); i++){
+			if(s.charAt(i-1) == '*' ){
+				check[0][i] = true;
+			}else{
+				break;
+			}
+		}
+		for(int i=1; i<=p.length(); i++){
+			for(int j=1; j<=s.length(); j++){
+				if(s.charAt(j-1) == p.charAt(i-1) || s.charAt(j-1) == '?'){
+					check[i][j] = check[i-1][j-1];
+				}else if(s.charAt(j-1) == '*'){
+					check[i][j] = check[i-1][j] || check[i][j-1];
+				}else{
+					check[i][j] = false;
+				}
+			}
+		}
+		return check[p.length()][s.length()];
+	}
+	
+	
+	public static void main(String[] argv){
+		String input1 = "aab";
+		String input2 = "a?a";
+		String input3 = "aa";
+		String input4 = "a*?";
+		String input5 = "c*a*b";
+		String input6 = "?*";
+		String input7 = "*";
+		System.out.println("Result for "+ input1 +" and "+ input5 + " is "+solution1(input1, input5));
+		System.out.println("Result for "+ input3 +" and "+ input6 + " is "+solution1(input3, input6));
+		System.out.println("Result for "+ input3 +" and "+ input7 + " is "+solution1(input3, input7));
+		System.out.println("Result for "+ input2 +" and "+ input3 + " is "+solution1(input2, input3));
+		System.out.println("Result for "+ input1 +" and "+ input4 + " is "+solution1(input1, input4));
+
+	}
+}

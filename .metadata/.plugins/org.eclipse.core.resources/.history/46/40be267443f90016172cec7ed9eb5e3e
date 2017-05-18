@@ -1,0 +1,99 @@
+package twoSigma;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+
+public class ReversePolishNotation {
+	
+	interface Token{
+		Stack execute(Stack stack);
+		
+	}
+	
+	// Use for digit
+	class Operand implements Token{
+		Double value;
+		
+		public Operand(double value){
+			this.value = value;
+		}
+		
+		@Override
+		public Stack execute(Stack stack){
+			stack.push(value);
+			return stack;
+		}
+	}
+	
+	interface Operator extends Token{}
+	
+	class Add implements Operator{
+		@SuppressWarnings("unchecked")
+		@Override
+		public Stack execute(Stack stack){
+			if(!stack.isEmpty()){
+				stack.push((Double)stack.pop()+(Double)stack.pop());
+			}
+			return stack;
+		}
+	}
+	
+	class Substract implements Operator{
+		@Override
+		public Stack execute(Stack stack){
+			if(!stack.isEmpty()){
+				Double num2 = (Double) stack.pop();
+				Double num1 = (Double) stack.pop();
+				stack.push(num1-num2);
+			}
+			return stack;
+		}
+	}
+	
+	class Multiply implements Operator{
+		@Override
+		public Stack execute(Stack stack){
+			if(!stack.isEmpty()){
+				stack.push((Double)stack.pop()*(Double)stack.pop());
+			}
+			return stack;
+		}
+	}
+	
+	class Divide implements Operator{
+		@Override
+		public Stack execute(Stack stack){
+			if(!stack.isEmpty()){
+				Double num2 = (Double)stack.pop();
+				Double num1 = (Double)stack.pop();
+				stack.push(num1/num2);
+			}
+			return stack;
+		}
+	}
+	
+	
+	
+	
+	public static void main(String[] argv){
+		Calculator cal = new Calculator();
+		// (1 + 2) * 4 + (4 - 2) == 14
+		System.out.println("1 2 + 4 * 4 2 - + = " 
+				   + cal.execute("1 2 + 4 * 4 2 - +"));
+		
+		// (1 + 4) * (3 + 7) / 5 == 10
+		System.out.println("1 4 + 3 7 + * 5 / = " 
+				   + cal.execute("1 4 + 3 7 + * 5 /"));
+		
+		// 10 + 2 == 12
+		System.out.println("10 2 + = " 
+				   + cal.execute("10 2 +"));
+		
+		// 10 / 2 == 5
+		System.out.println("10 2 / = "
+				   + cal.execute("10 2 /"));
+		
+	}
+	
+}

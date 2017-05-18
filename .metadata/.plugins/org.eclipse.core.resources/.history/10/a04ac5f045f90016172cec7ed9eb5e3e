@@ -1,0 +1,125 @@
+package twoSigma;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+
+
+	interface Token{
+		void execute(Stack<Double> stack);	
+	}
+	
+	// Use for digit
+	class Operand implements Token{
+		Double value;
+		
+		public Operand(double value){
+			this.value = value;
+		}
+		
+		@Override
+		public void execute(Stack<Double> stack){
+			stack.push(value);
+		}
+	}
+	
+	
+	// Use for operator
+	interface Operator extends Token{}
+	
+	class Add implements Operator{
+		@Override
+		public void execute(Stack<Double> stack){
+			if(!stack.isEmpty()){
+				stack.push(stack.pop()+stack.pop());
+			}
+		}
+	}
+	
+	class Substract implements Operator{
+		@Override
+		public void execute(Stack<Double> stack){
+			if(!stack.isEmpty()){
+				Double num2 = stack.pop();
+				Double num1 = stack.pop();
+				stack.push(num1-num2);
+			}
+			
+		}
+	}
+	
+	class Multiply implements Operator{
+		@Override
+		public void execute(Stack<Double> stack){
+			if(!stack.isEmpty()){
+				stack.push(stack.pop()*stack.pop());
+			}			
+		}
+	}
+	
+	class Divide implements Operator{
+		@Override
+		public void execute(Stack<Double> stack){
+			if(!stack.isEmpty()){
+				Object num2 = stack.pop();
+				Object num1 = stack.pop();
+				if(num2 instanceof Double && num1 instanceof Double){
+					stack.push((double)num1/(double)num2);
+				}
+			}
+			
+		}
+	}
+	
+	public class ReversePolishNotation {
+		
+		Map<String, Token> tokens = new HashMap<>();
+		
+		public ReversePolishNotation (){
+			tokens.put("+", new Add());
+			tokens.put("-", new Substract());
+			tokens.put("*", new Multiply());
+			tokens.put("/", new Divide());
+		}
+		
+		protected Token createToken(String s){
+			Token token = tokens.get(s);
+			if(token == null){
+				token = new Operand(Double.valueOf(s));
+			}
+			return token;
+		}
+		
+		protected double execute(String s){
+			@SuppressWarnings("rawtypes")
+			Stack stack = new Stack<Double>();
+			
+			String[] input = s.split("\\s");
+			for(String str:input){
+				Token token = createToken(str);
+				token.execute(stack);
+			}
+			return (double) stack.pop();
+		}
+	
+	
+	
+	public static void main(String[] argv){
+		ReversePolishNotation  cal = new ReversePolishNotation ();
+		// (1 + 2) * 4 + (4 - 2) == 14
+		System.out.println("1 2 + 4 * 4 2 - + = " 
+				   + cal.execute("1 2 + 4 * 4 2 - +"));	
+		// (1 + 4) * (3 + 7) / 5 == 10
+		System.out.println("1 4 + 3 7 + * 5 / = " 
+				   + cal.execute("1 4 + 3 7 + * 5 /"));	
+		// 10 + 2 == 12
+		System.out.println("10 2 + = " 
+				   + cal.execute("10 2 +"));	
+		// 10 / 2 == 5
+		System.out.println("10 2 / = "
+				   + cal.execute("10 2 /"));	
+	}
+}
+	
+	
+

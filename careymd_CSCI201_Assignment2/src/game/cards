@@ -1,0 +1,11 @@
+1 - Move a pawn from Start or move a pawn one space forward.
+2 - Move a pawn from Start or move a pawn two spaces forward. Drawing a two entitles the player to draw again at the end of their turn.
+3 - Move a pawn three spaces forward.
+4 - Move a pawn four spaces backward.
+5 - Move a pawn five spaces forward.
+7 - Move one pawn seven spaces forward or split the seven spaces between two pawns.
+8 - Move a pawn eight spaces forward.
+10 - Move a pawn ten spaces forward or one space backward.
+11 - Move a pawn eleven spaces forward, or switch spaces with an opposing pawn.
+12 - Move a pawn twelve spaces forward.
+Sorry! - Move any one pawn from Start to a square occupied by any opponent, sending that pawn back to its own start.

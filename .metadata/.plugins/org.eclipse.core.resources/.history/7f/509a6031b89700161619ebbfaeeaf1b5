@@ -1,0 +1,118 @@
+import java.util.LinkedList;
+import java.util.List;
+
+public class Solution {
+	 /**
+	   * Test:
+	   * 
+	   * String csvString1 = "John,Smith,john.smith@gmail.com,Los Angeles,1";
+		String csvString2 = "Jane,Roberts,janer@msn.com,\"San Francisco, CA\",0";
+		String csvString3 = "\"Alexandra \"\"Alex\"\"\",Menendez,alex.menendez@gmail.com,Miami,1";
+		String csvString4 = "\"\"\"Alexandra Alex\"\"\"";
+		
+		John,Smith,john.smith@gmail.com,Los Angeles,1
+		Jane,Roberts,janer@msn.com,"San Francisco, CA",0
+		"Alexandra ""Alex""",Menendez,alex.menendez@gmail.com,Miami,1
+		"""Alexandra Alex"""
+	
+		John|Smith|john.smith@gmail.com|Los Angeles|1
+		Jane|Roberts|janer@msn.com|San Francisco, CA|0
+		Alexandra "Alex"|Menendez|alex.menendez@gmail.com|Miami|1
+		"Alexandra Alex"
+	
+		System.out.println(CSVReader(csvString1));
+		System.out.println(CSVReader(csvString2));
+		System.out.println(CSVReader(csvString3));
+		System.out.println(CSVReader(csvString4));
+	   * 
+	   * @param string
+	   * @return
+	   */
+	  
+		public static String CSVReader(String string){
+			boolean inQuotation = false;
+			for(int i=0; i<string.length(); i++){
+				if(inQuotation){
+					
+				}else{
+					
+				}
+			}			
+		}
+	
+	/**
+	 * Given an array of words and a length L, format the text such that each line
+	 *  has exactly L characters and is fully (left and right) justified.
+	You should pack your words in a greedy approach; that is, pack as many words as 
+	you can in each line. Pad extra spaces ' ' when necessary so that each line has 
+	exactly L characters.
+	Extra spaces between words should be distributed as evenly as possible. 
+	If the number of spaces on a line do not divide evenly between words, 
+	the empty slots on the left will be assigned more spaces than the slots on the right.
+	For the last line of text, it should be left justified and no extra space 
+	is inserted between words.
+	For example,
+	words: ["This", "is", "an", "example", "of", "text", "justification."]
+	L: 16.
+	Return the formatted lines as:
+[
+   "This    is    an",
+   "example  of text",
+   "justification.  "
+]
+Note: Each word is guaranteed not to exceed L in length.
+	 * @param words
+	 * @param maxWidth
+	 * @return
+	 */
+	public static List<String> textJustification(String[] words, int maxWidth) {
+		List<String>result = new LinkedList<>();
+		int index=0;
+		while(index<words.length){
+			int last = index+1;
+			int currentCount = words[index].length();
+			while(last<words.length){
+				if(currentCount+words[last].length()+1>maxWidth){
+					break;
+				}
+				currentCount=currentCount+words[last].length()+1;
+				last++;
+			}
+			int gap=last-index-1;
+			StringBuilder builder = new StringBuilder();
+			if(gap == 0 || last==words.length){
+				for(int i=index; i<last; i++){
+					builder.append(words[i]+" ");
+				}
+				builder.deleteCharAt(builder.length()-1);
+				for(int i=last; i<maxWidth; i++){
+					builder.append(" ");
+				}
+			}else{
+				int count = (maxWidth-currentCount)/gap;
+				int extra = (maxWidth-currentCount)%gap;
+				for(int i=index; i<last; i++){
+					builder.append(words[i]);
+					if(i<last-1){
+						int toadd = 0;;
+						if(i-index<extra){
+							toadd = 1;
+						}
+						for(int j=0; j<=count+toadd; j++){
+							builder.append(" ");
+						}
+					}
+				}	
+			}
+			System.out.println(builder.toString());
+			result.add(builder.toString());
+			index = last;
+		}
+		return result;
+	}
+	
+	public static void main(String[] args){
+		String[] input = {"This", "is", "an", "example", "of", "text", "justification."};
+		textJustification(input, 16);
+	}
+}

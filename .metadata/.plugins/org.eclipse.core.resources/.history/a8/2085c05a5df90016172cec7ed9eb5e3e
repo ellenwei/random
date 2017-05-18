@@ -1,0 +1,22 @@
+package twoSigma;
+
+public class WildcardMatching {
+	
+	public boolean solution1(String p, String s){
+		boolean[][] check = new boolean[p.length()+1][s.length()+1];
+		check[0][0] = true;
+		for(int i=1; i<s.length(); i++){
+			if(s.charAt(i-1) == '*' ){
+				check[0][i] = true;
+			}else{
+				break;
+			}
+		}
+		for()
+	}
+	
+	
+	public static void main(String[] argv){
+		
+	}
+}

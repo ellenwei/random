@@ -1,0 +1,29 @@
+package twoSigma;
+
+import java.util.Stack;
+
+public class ReversePolishNotation {
+	interface Token{
+		Stack execute(Stack stack);
+		
+	}
+	
+	class Operand implements Token{
+		Double value;
+		
+		public Operand(value){
+			this.value = value;
+		}
+		
+		@Override
+		public 
+		Stack execute(Stack stack){
+			stack.push(value);
+			return stack;
+		}
+	}
+	
+	public class Calculator{
+		
+	}
+}
